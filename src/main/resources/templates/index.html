@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content<BR><BR>INDEX!!</div>
+        
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Telefone</th>
+					<th>Email</th>
+					<th>Departamento</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="pessoa : ${userList}">
+					<td th:text="${pessoa.email}"></td>
+					<td th:text="${pessoa.cpf}"></td>
+					<td th:text="${pessoa.password}"></td>
+					<td>
+			
+					</td>
+				</tr>
+			</tbody>
+		</table>
+   
+        
+    </body>
+</html>
