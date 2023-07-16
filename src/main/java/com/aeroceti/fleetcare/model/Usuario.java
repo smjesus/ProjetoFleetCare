@@ -55,7 +55,7 @@ public class Usuario implements Serializable {
     @Column(name = "ativo")
     private boolean ativo          = true ;
     
-    @Column(name = "password",       length = 20)
+    @Column(name = "password",       length = 128)
     private String password        = "";
     
     @Version
@@ -279,7 +279,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Objeto Usuario[ id=" + getUsuarioID() + " - e-mail=" + getEmail() + " ]";
+        return getNome() + "[ id=" + getUsuarioID() + " - e-mail=" + getEmail() + " ]";
     }
     
 }

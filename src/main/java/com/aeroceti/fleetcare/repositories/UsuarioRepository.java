@@ -23,16 +23,26 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UsuarioRepository extends JpaRepository <Usuario, UUID> {
     @Override
-    //Listagem completa dos usuarios cadastrados:
+    //Listagem completa dos usuarios cadastrados
     List<Usuario> findAll();
     
-    // obtem um usuario atraves do email.
+    // obtem um usuario atraves do email
     Usuario findByEmail(String chavePesquisa);
-
+    
+    // obtem um usuario atraves do ID
+    Usuario findByUsuarioID(UUID chavePesquisa);
+        
     // obtem uma lista de usuarios ORDENADA por nome
     List<Usuario> findByOrderByNomeAsc();
 
     // obtem uma lista de usuarios ORDENADA por email
     List<Usuario> findByOrderByEmailAsc();
+
+    // obtem o numero de usuarios por email
+    int countByEmail(String email);
     
+    // obtem o numero de usuarios por ID
+    int countByUsuarioID(UUID usuarioID);
+    
+
 }
