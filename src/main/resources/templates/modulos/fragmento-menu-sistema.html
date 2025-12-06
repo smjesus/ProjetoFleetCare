@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- 
+ * Projeto:  Fleet Care Amazon  -  Sistema de Controle de Locacao e Manutencao de Veiculos.
+ * Gerente:  Sergio Murilo  -  smurilo at GMail
+ * Data:     Manaus/AM  -  2024
+ * Equipe:   Murilo, Victor, Allan
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org" >
+    <head><title>Fragment Thymeleaf</title></head>
+    <body>
+        <div  th:fragment="navbar-menudashboard" >
+            <nav class="navbar navbar-expand-lg navbar-red navbar-dark fixed-top">
+                <div class="wrapper"></div>
+                <div class="container-fluid all-show">
+                    <a class="navbar-brand text-center" th:href="@{/}"><img th:src="@{/assets/logo_menu.png}" alt="FLEETCARE"/>
+                        <p style="font-size: 10px; margin-bottom: 0px;" th:text="${@environment.getProperty('application.version')}" /></a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/dashboard}"><span th:text="#{index.dashboard}"/></a>
+                            </li>
+                            <!--  MENU USUARIOS  -->
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/usuario/paginar/{page}/{size}(page=1, size=15)}"><span th:text="#{index.menu.colaboradores}"/></a>
+                            </li>
+                            <!--  MENU CARROS  -->
+<!--                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/carro/paginar/{page}/{size}(page=1, size=15)}" ><span th:text="#{index.listCars}" /></a>
+                            </li>-->
+                            <!--  MENU OPERACIONAL  -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownOPR" data-bs-toggle="dropdown" role="button"  aria-haspopup="true"  aria-expanded="false">&nbsp;&nbsp;<span th:text="#{index.menu.operational}" />&nbsp;&nbsp;</a>
+                                <!-- Sub-Menu dropdown do BootStrap 5  -->
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownOPR">
+                                  <a class="dropdown-item" th:href="@{/permissao/paginar/{page}/{size}(page=1, size=15)}"  th:text="#{index.listRules}"></a>
+<!--                                  <a class="dropdown-item" th:href="@{/fabricante/paginar/{page}/{size}(page=1, size=15)}" th:text="#{index.listManufacturers}"></a>
+                                  <a class="dropdown-item" th:href="@{/modelo/paginar/{page}/{size}(page=1, size=15)}"     th:text="#{index.listModels}"></a>-->
+
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownI18n" data-bs-toggle="dropdown" role="button"  aria-haspopup="true"  aria-expanded="false">&nbsp;&nbsp;<span th:text="#{index.lang.menu}" />&nbsp;&nbsp;</a>
+                                <!-- Sub-Menu dropdown do BootStrap 5  -->
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownI18n">
+                                  <a class="dropdown-item" th:href="@{/dashboard?locale=en_US}" th:text="#{index.lang.eng}"></a>
+                                  <a class="dropdown-item" th:href="@{/dashboard?locale=pt_BR}" th:text="#{index.lang.pt}"></a>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <!-- Avatar do usuário à direita -->
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link d-flex flex-column align-items-center text-center" th:href="@{/api-doc}" target="_blank">
+                                    <i class="fa-solid fa-circle-nodes fa-2xl mb-1" style="color: #FFD43B;"></i>
+                                    <span th:text="#{index.menu.api}"/></a>
+                            </li>                            
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle d-flex flex-column align-items-center text-center" href="#" id="navbarUserDropdown"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-regular fa-circle-user fa-2xl mb-1" style="color: #FFD43B;"></i>
+                                    <span th:text="${#authentication.getPrincipal().getNomeUsuario()}" style="font-size: 0.7rem;"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end user-dropdown" aria-labelledby="navbarUserDropdown">
+                                    <li>
+                                        <form method="post" th:action="@{/logout}">
+                                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                                            <button type="submit" class="dropdown-item">Logout</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </body>
+</html>
+

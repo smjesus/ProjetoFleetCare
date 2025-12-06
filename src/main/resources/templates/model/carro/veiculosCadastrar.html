@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="" />
+    <meta name="description" content="Sistema de Gestao de Veiculos - FleetCare Amazon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous"  integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" />
+    <link rel="stylesheet" href="" th:href="@{/styles/estylos.css}" />
+
+    <title>FleetCare Amazon</title>
+</head>
+<body>
+    <!-- Full Page Device -->
+    <div id="page-container">
+        <!-- CONTEUDO DA PAGINA  -->
+        <div id="content-wrap">
+            <!--  MENU DO SISTEMA  -->
+            <div th:replace="~{modulos/publica-nav :: navbar-menu}"></div>
+            
+            <!--  AREA DO CONTEUDO DINAMICO  -->
+            <section class="d-flex align-items-center">
+                <div class="container">
+                    <div class="row">  	
+                        <div class="col">
+                            <br/><h2 th:text="#{form.addcars}"></h2><br/>
+                            <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
+                                <span th:text="${mensagem}"></span>
+                            </div>
+                            <form action="#" th:action="@{/carro/gravar}" th:object="${carro}" method="post">
+                                <div class="row mb-3">
+                                    <label class="col-sm-3 col-form-label" th:text="#{form.select.models}"></label>
+                                    <div class="col-sm-9">
+                                        <select th:field="*{modelo}">
+                                            <option value="" selected th:text="#{form.select.choiceText}" />
+                                            <option th:each="i : ${modelos}" th:value="${i.modeloID}" th:text="${i.modeloName}" />
+                                        </select> 
+                                    </div>                                                                     
+                                    <label class="col-sm-1 col-form-label" th:text="#{form.name}"></label>
+                                    <div class="col-sm-5">
+                                        <input class="form-control" type="text" th:field="*{numeroDaPlaca}" /> 
+                                    </div>
+                                    <div class="col-sm-5"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('numeroDaPlaca')}" th:errors="*{numeroDaPlaca}"></span>
+                                    </div>				
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-1 col-form-label" th:text="#{form.name}"></label>
+                                    <div class="col-sm-5">
+                                        <input class="form-control" type="text" th:field="*{anoDoCarro}" /> 
+                                    </div>
+                                    <div class="col-sm-5"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('anoDoCarro')}" th:errors="*{anoDoCarro}"></span>
+                                    </div>				
+                                </div>
+                                <input  class="btn btn-outline-primary btn-sm" type="submit" th:value="#{form.button}"/>
+                            </form>	
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--  FIM DO CONTEUDO DINAMICO  -->
+            
+        </div>
+        <!-- ROODAPE DA PAGINA -->
+        <div th:replace="~{modulos/publica-footer :: navbar-footer}"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!-- 
+ * Projeto:  Fleet Care Amazon  -  Sistema de Controle de Locacao e Manutencao de Veiculos.
+ * Gerente:  Sergio Murilo  -  smurilo at GMail
+ * Data:     Manaus/AM  -  2024
+ * Equipe:   Murilo, Victor, Allan
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org" >
+    <head><title>Fragment Thymeleaf</title></head>
+    <body>
+        <div th:fragment="pre-footer">          
+        <!-- About  -->
+        <section class="content-section bg-primary text-white" id="about-us">
+            <div class="container px-4 px-lg-5 text-center">
+                <h2 class="mb-4"><span th:text="#{pre.footer.company-logo}"/></h2>
+                <a class="btn btn-xl btn-light me-4" href="https://www.aeroceti.com.br" target="_blank"><span th:text="#{pre.footer.company-btn}"/></a>
+            </div>
+        </section>
+
+        <!-- Go Home -->
+        <section class="content-section bg-light" id="go-home">
+            <div class="container px-4 px-lg-5 text-center">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-10">
+                        <h2><span th:text="#{pre.footer.go-home-txt}"/>.</h2>
+                        <a class="btn btn-dark btn-xl" th:href="@{/}"><span th:text="#{pre.footer.go-home-btn}"/></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+    </body>
+</html>

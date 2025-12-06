@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!-- 
+ * Projeto:  Fleet Care Amazon  -  Sistema de Controle de Locacao e Manutencao de Veiculos.
+ * Gerente:  Sergio Murilo  -  smurilo at GMail
+ * Data:     Manaus/AM  -  2024
+ * Equipe:   Murilo, Victor, Allan
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="~{modulos/fragmento-header :: header-section}">
+    <title>FleetCare Amazon</title>
+</head>
+    
+<body th:style="'background-image:url(' + @{/assets/fleet_bg.png} + '); background-repeat: no-repeat, repeat; background-size: cover; background-color: white;'">    
+    <!-- Full Page Device -->
+    <div id="page-container">
+        <!-- CONTEUDO DA PAGINA  -->
+        <div id="content-wrap">
+            <!--  MENU DO SISTEMA  -->
+            <div th:insert="~{modulos/fragmento-menu-sistema :: navbar-menudashboard}"></div>
+            
+            <!--  AREA DO CONTEUDO DINAMICO  -->
+            <section class="d-flex align-items-center">
+                <div class="col inner-box">
+                    
+                    <div class="btn-toolbar justify-content-between" role="toolbar">
+                        <div>
+                          <br/><h1 th:text="#{fabricante.list}">&nbsp;</h1><br/>
+                        </div>
+                        <div>
+                            <br/><a class="btn btn-primary btn-lg" th:href="@{/fabricante/cadastrar}">
+                                <span class="fa-regular fa-square-plus">&nbsp;</span>
+                                <span th:text="#{index.addFactories}"></span>
+                            </a><br/>
+                        </div>
+                    </div>
+                    
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th th:text="#{form.name}" style="width: 90%;"></th>
+                                <th th:text="#{admin.editar.papel.usuario.actions}" colspan="2" style="text-align: center;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:if="${colecao.empty}">
+                                    <td colspan="3" th:text="#{fabricante.no}"></td>
+                            </tr>
+                            <tr th:each="fabricante : ${colecao}">
+                                <td><span th:text="${fabricante.fabricanteName}"></span></td>
+                                <td>
+                                    <a class="btn btn-outline-danger btn-sm" 
+                                       th:href="@{/fabricante/remover/{id}(id=${fabricante.entidadeID})}"
+                                       th:data-confirm-delete="|Você gostaria de apagar ${fabricante.fabricanteName}?|"
+                                       onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false"
+                                       th:text="#{admin.listar.usuario.delete}">
+                                    </a>
+                                </td>				
+                                <td>
+                                    <a class="btn btn-outline-primary btn-sm" 
+                                       th:href="@{/fabricante/atualizar/{id}(id=${fabricante.entidadeID})}"
+                                       th:text="#{admin.editar.papel.usuario.edit}">
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>  
+                    <!--  PAGINACAO DA TABELA  -->
+                    <nav style="margin-top: 20px;" th:if="${colecao.totalPages > 0}">
+                        <ul class="pagination" style="justify-content: center;">
+                            <!-- Botão Previous -->
+                            <li class="page-item" th:classappend="${colecao.first} ? 'disabled'">
+                                <a class="page-link"
+                                    th:href="@{/fabricante/paginar/{page}/{pageSize}(page=${colecao.number}, pageSize=15)}">
+                                    <span th:text="#{table.pagination.previous}"></span>
+                                </a>
+                            </li>
+                            <!-- Links das páginas -->
+                            <li class="page-item"
+                                th:each="i : ${#numbers.sequence(0, colecao.totalPages - 1)}"
+                                th:classappend="${colecao.number == i} ? 'active'">
+                                <a class="page-link"
+                                   th:text="${i + 1}"
+                                   th:href="@{/fabricante/paginar/{page}/{pageSize}(page=${i+1}, pageSize=15)}"></a>
+                            </li>
+                            <!-- Botão Next -->
+                            <li class="page-item" th:classappend="${colecao.last} ? 'disabled'">
+                                <a class="page-link"
+                                    th:href="@{/fabricante/paginar/{page}/{pageSize}(page=${colecao.number + 2}, pageSize=15)}">
+                                    <span th:text="#{table.pagination.next}"></span>
+                                </a>
+                            </li>                 
+                        </ul>
+                    </nav>   
+                </div>
+            </section>
+            <!--  FIM DO CONTEUDO DINAMICO  -->
+            
+        </div>
+    </div>
+    <!-- ROODAPE DA PAGINA -->
+    <footer th:insert="~{modulos/fragmento-footer-blank :: footer-limpo}"></footer>
+</body>
+</html>

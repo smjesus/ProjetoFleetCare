@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!-- 
+ * Projeto:  Fleet Care Amazon  -  Sistema de Controle de Locacao e Manutencao de Veiculos.
+ * Gerente:  Sergio Murilo  -  smurilo at GMail
+ * Data:     Manaus/AM  -  2024
+ * Equipe:   Murilo, Victor, Allan
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org" >
+    <head><title>Fragment Thymeleaf</title></head>
+    <body>
+        <div th:fragment="form-fields-user" >
+                <!--  STATUS DO USUÁRIO  -->
+                <div class="row m-1 mb-3 align-items-center bg-light rounded shadow-sm p-2" sec:authorize="hasAuthority('Administrador')" >
+                    <label class="col-sm-2 col-form-label" th:text="#{admin.editar.papel.usuario.actived}"></label>
+                    <div class="col-sm-6 d-flex justify-content-between">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio"     th:field="*{ativo}" th:value="true"  id="ativoTrue" />
+                            <label class="form-check-label" for="ativoTrue"  th:text="#{admin.editar.papel.usuario.active}">Ativo</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio"     th:field="*{ativo}" th:value="false" id="ativoFalse" />
+                            <label class="form-check-label" for="ativoFalse" th:text="#{admin.editar.papel.usuario.notactive}">Inativo</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <span class="mensagem" th:if="${#fields.hasErrors('ativo')}" th:errors="*{ativo}"></span>
+                    </div>
+                </div>
+
+                <!--  CPF  DO USUARIO   -->
+                <div class="row m-1">
+                    <label class="col-sm-2 col-form-label" th:text="#{form.cpf}"></label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="text" th:field="*{cpf}" /> 
+                    </div>
+                    <div class="col-sm-4"> 
+                        <span class="mensagem" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></span>
+                    </div>
+                </div>
+                <!--  NOME  DO USUARIO   -->
+                <div class="row m-1">
+                    <label class="col-sm-2 col-form-label" th:text="#{form.name}"></label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="text" th:field="*{nome}" /> 
+                    </div>
+                    <div class="col-sm-4"> 
+                        <span class="mensagem" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+                    </div>				
+                </div>
+                <!--  SOBRENOME  DO USUARIO   -->
+                <div class="row m-1">
+                    <label class="col-sm-2 col-form-label" th:text="#{form.surname}"></label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="text" th:field="*{sobrenome}" /> 
+                    </div>
+                    <div class="col-sm-4"> 
+                        <span class="mensagem" th:if="${#fields.hasErrors('sobrenome')}" th:errors="*{sobrenome}"></span>
+                    </div>				
+                </div>
+                <!--  DATA DE NASCIMENTO  DO USUARIO   -->
+                <div class="row m-1">
+                    <label class="col-sm-2 col-form-label" th:text="#{form.birthday}"></label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="text" th:field="*{dataNascimento}" /> 
+                    </div>
+                    <div class="col-sm-4"> 
+                        <span class="mensagem" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}"></span>
+                    </div>
+                </div>
+                <!--  SEXO DO USUARIO  -->
+                <div class="row m-1">
+                    <label class="col-sm-2 col-form-label" th:text="#{form.gender}"></label>
+                    <div class="col-sm-6">
+                        <select class="form-select" th:field="*{sexo}">
+                            <option value="" th:text="#{form.user.select}">-- Selecione --</option>
+                            <option th:value="1" th:text="#{form.user.sexo.1}"></option>
+                            <option th:value="2" th:text="#{form.user.sexo.2}"></option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <span class="mensagem"
+                              th:if="${#fields.hasErrors('sexo')}"
+                              th:errors="*{sexo}"></span>
+                    </div>
+                </div>
+                <!--  EMAIL  DO USUARIO   -->
+                <div class="row m-1">
+                    <label class="col-sm-2 col-form-label" th:text="#{form.email}"></label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="text" th:field="*{email}"  /> 
+                    </div>
+                    <div class="col-sm-4"> 
+                        <span class="mensagem" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                    </div>
+                </div>			
+                <!--  CONTATO  DO USUARIO   -->
+                <div class="row m-1">
+                    <label class="col-sm-2 col-form-label" th:text="#{form.contact}"></label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="text" th:field="*{whatsapp}" /> 
+                    </div>
+                    <div class="col-sm-4"> 
+                        <span class="mensagem" th:if="${#fields.hasErrors('whatsapp')}" th:errors="*{whatsapp}"></span>
+                    </div>
+                </div>
+                <!--  NÍVEL DE ACESSO  -->
+                <div class="row m-1" sec:authorize="hasAuthority('Administrador')" >
+                    <label class="col-sm-2 col-form-label" th:text="#{form.user.accessLevel}"></label>
+                    <div class="col-sm-6">
+                        <select class="form-select" th:field="*{nivelAcesso}">
+                            <option value="" th:text="#{form.user.select}">-- Selecione --</option>
+                            <option th:each="nivel : ${permissoesList}"
+                                    th:value="${nivel.entidadeID}"
+                                    th:text="${nivel.nome}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <span class="mensagem"
+                              th:if="${#fields.hasErrors('nivelAcesso')}"
+                              th:errors="*{nivelAcesso}"></span>
+                    </div>
+                </div>
+
+        </div>
+    </body>
+</html>    

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- 
+ * Projeto:  Fleet Care Amazon  -  Sistema de Controle de Locacao e Manutencao de Veiculos.
+ * Gerente:  Sergio Murilo  -  smurilo at GMail
+ * Data:     Manaus/AM  -  2024
+ * Equipe:   Murilo, Victor, Allan
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="~{modulos/fragmento-header :: header-section}">
+    <title>FleetCare Amazon</title>
+</head>
+    
+<body th:style="'background-image:url(' + @{/assets/fleet_bg.png} + '); background-repeat: no-repeat, repeat; background-size: cover; background-color: white;'">    
+    <!-- Full Page Device -->
+    <div id="page-container">
+        <!-- CONTEUDO DA PAGINA  -->
+        <div id="content-wrap">
+            <!--  MENU DO SISTEMA  -->
+            <div th:insert="~{modulos/fragmento-menu-sistema :: navbar-menudashboard}"  sec:authorize="isAuthenticated()" ></div>
+            
+            <div th:insert="~{modulos/fragmento-header-novaconta :: section-novaconta}" sec:authorize="!isAuthenticated()"></div>            
+            
+            <!--  AREA DO CONTEUDO DINAMICO  -->
+            <section class="d-flex align-items-center">
+                <div class="col inner-box">
+                    <div class="row m-1" sec:authorize="hasAuthority('Administrador')" >
+                        <h2 th:text="#{form.register}"></h2>
+                    </div>
+                        
+                    <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
+                        <span th:text="${mensagem}"></span>
+                    </div>
+
+                    <form class="fleetCard" th:object="${usuario}" method="post"
+                                            th:action="${#authorization.expression('isAuthenticated()')} ?
+                                                @{/usuario/gravar} :
+                                                @{/usuario/novaconta}" >
+                        <div th:replace="~{modulos/fragmento-user-form-data :: form-fields-user}"></div>
+                        <!--  SENHA DO USUARIO   -->
+                        <div class="row m-1" >
+                            <label class="col-sm-2 col-form-label" th:text="#{form.password}"></label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" th:field="*{password}" /> 
+                            </div>
+                            <div class="col-sm-4"> 
+                                <span class="mensagem" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+                            </div>
+                        </div>
+                        <!--  CONFIRMAR SENHA DO USUARIO   -->
+                        <div class="row m-1" >
+                            <label class="col-sm-2 col-form-label" th:text="#{form.confirmarSenha}"></label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" th:field="*{confirmarSenha}" /> 
+                            </div>
+                            <div class="col-sm-4"> 
+                                <span class="mensagem" th:if="${#fields.hasErrors('confirmarSenha')}" th:errors="*{confirmarSenha}"></span>
+                            </div>
+                        </div>
+                        <div class="row m-3 align-items-center">
+                            <input  class="btn btn-primary btn-lg w-50" type="submit" id="btnGravarUsuarioBD" th:value="#{form.button.enviar}"/>
+                        </div>
+                    </form>	
+                </div>
+            </section>
+            <!--  FIM DO CONTEUDO DINAMICO  -->
+        </div>
+    </div>
+    <!--  RODAPE DA PAGINA  -->
+    <footer th:insert="~{modulos/fragmento-footer-blank :: footer-limpo}"></footer>
+</body>
+</html>

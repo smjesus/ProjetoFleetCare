@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!-- 
+ * Projeto:  Fleet Care Amazon  -  Sistema de Controle de Locacao e Manutencao de Veiculos.
+ * Gerente:  Sergio Murilo  -  smurilo at GMail
+ * Data:     Manaus/AM  -  2024
+ * Equipe:   Murilo, Victor, Allan
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org" >
+    <head><title>Fragment Thymeleaf</title></head>
+    <body>
+        <div th:fragment="section-novaconta" class="container px-5">
+
+            <h1 class="display-3 fw-bold mb-4">
+                <span class="bi bi-car-front-fill me-2"/><br/><span th:text="${@environment.getProperty('application.title')}"/>
+            </h1>
+            <p class="lead mb-5"><span th:text="#{home.web.texto.intro.3}" /></p>
+            
+        </div>
+    </body>
+</html>

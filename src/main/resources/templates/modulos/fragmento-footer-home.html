@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- 
+ * Projeto:  Fleet Care Amazon  -  Sistema de Controle de Locacao e Manutencao de Veiculos.
+ * Gerente:  Sergio Murilo  -  smurilo at GMail
+ * Data:     Manaus/AM  -  2024
+ * Equipe:   Murilo, Victor, Allan
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org" >
+<head><title>Fragment Thymeleaf</title></head> 
+<body>
+    <div th:fragment="navbar-footer"  class="footer">   
+        
+        <footer class="footer mt-auto py-3 bg-dark text-white">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-4">
+                        <span class="text-muted">© 2025 FleetCare - Gestão de Veículos</span>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="#" class="text-decoration-none text-info me-3">Termos de Uso</a>
+                        <a href="#" class="text-decoration-none text-info">Política de Privacidade</a>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="text-muted">Desenvolvido com ❤️ e Bootstrap</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+              integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"    />
+        <!--Core theme CSS    -->
+        <link rel="stylesheet" href="" th:href="@{/css/fleetcare_web.css}"                      />
+
+<!--        <footer class="footer" style="background-color: #000000; margin-bottom: 0; height: 120px; padding: 2%;">
+            <div class="row">
+                <div class="col-4 text-center"><b><a th:href="@{/termos}"><span th:text="#{home.text.terms}"/></a></b></div>
+                <div class="col-4 text-center"><b><a th:href="@{/privacidade}"><span th:text="#{home.text.private}"/></a></b></div>
+                <div class="col-4 text-center" style="color: white;">&copy; <a th:href="@{/}">CachaBOT</a> - <span th:text="#{home.text.copyright}"/></div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center" style="color: white;"><span th:text="#{home.text.company}"/></div>
+            </div>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+                  integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+             Core theme CSS    
+            <link rel="stylesheet" href="" th:href="@{/css/fleetcare.css}"                      />
+             Pop-Up da SweetAlert2 at https://sweetalert2.github.io/     
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" ></script>
+        </footer>
+        <meta name="_csrf"        th:content="${_csrf.token}"      />
+        <meta name="_csrf_header" th:content="${_csrf.headerName}" />    
+        <div th:insert="~{modulos/fragmento-sweetFaleConosco :: popup-sweetAlert}"></div>-->
+    </div>
+</body>
+</html>
+
+
+

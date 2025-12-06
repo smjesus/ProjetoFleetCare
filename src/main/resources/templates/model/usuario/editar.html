@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- 
+ * Projeto:  Fleet Care Amazon  -  Sistema de Controle de Locacao e Manutencao de Veiculos.
+ * Gerente:  Sergio Murilo  -  smurilo at GMail
+ * Data:     Manaus/AM  -  2024
+ * Equipe:   Murilo, Victor, Allan
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="~{modulos/fragmento-header :: header-section}">
+    <title>FleetCare Amazon</title>
+</head>
+    
+<body th:style="'background-image:url(' + @{/assets/fleet_bg.png} + '); background-repeat: no-repeat, repeat; background-size: cover; background-color: white;'">    
+    <!-- Full Page Device -->
+    <div id="page-container">
+        <!-- CONTEUDO DA PAGINA  -->
+        <div id="content-wrap">
+            <!--  MENU DO SISTEMA  -->
+            <div th:insert="~{modulos/fragmento-menu-sistema :: navbar-menudashboard}"></div>
+            
+            <!--  AREA DO CONTEUDO DINAMICO  -->
+            <section class="d-flex align-items-center">
+                <div class="col inner-box">
+                    <br/><h2 th:text="#{user.alterar.usuario.edit.user}"></h2><br/>
+                    <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
+                        <span th:text="${mensagem}"></span>
+                    </div>
+                    <form class="fleetCard" th:action="@{/usuario/atualizar}" th:object="${usuario}" method="post">
+                        
+                        <div th:replace="~{modulos/fragmento-user-form-data :: form-fields-user}"></div>
+
+                        <!--  CAMPOS HIDDEN  -->
+                        <div class="row mb-3">
+                            <div class="col-sm-2">
+                                <input class="form-control" type="hidden" th:field="*{ativo}"      /> 
+                                <input class="form-control" type="hidden" th:field="*{versao}"     /> 
+                                <input class="form-control" type="hidden" th:field="*{password}"   /> 
+                                <input class="form-control" type="hidden" th:field="*{entidadeID}" /> 
+                                <input class="form-control" type="hidden" id="confirmarSenha" name="confirmarSenha" th:value="*{password}"   /> 
+                            </div>
+                        </div>                                     
+
+                        <input  class="btn btn-primary btn-lg" type="submit" th:value="#{form.update}"/>
+                    </form>	
+                </div>
+            </section>
+            <!--  FIM DO CONTEUDO DINAMICO  -->
+        </div>
+    </div>
+    <!--  RODAPE DA PAGINA  -->
+    <footer th:insert="~{modulos/fragmento-footer-blank :: footer-limpo}"></footer>
+</body>
+</html>

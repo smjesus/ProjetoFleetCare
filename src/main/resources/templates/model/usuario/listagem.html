@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- 
+ * Projeto:  Fleet Care Amazon  -  Sistema de Controle de Locacao e Manutencao de Veiculos.
+ * Gerente:  Sergio Murilo  -  smurilo at GMail
+ * Data:     Manaus/AM  -  2024
+ * Equipe:   Murilo, Victor, Allan
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="~{modulos/fragmento-header :: header-section}">
+    <title>FleetCare Amazon</title>
+</head>
+    
+<body>    
+    <!-- Full Page Device -->
+    <div id="page-container">
+        <!-- CONTEUDO DA PAGINA  -->
+        <div id="content-wrap">
+
+            <!--  AREA DO CONTEUDO DINAMICO  -->
+            <section class="d-flex align-items-center">
+                <div class="col inner-box">
+
+                    <div class="d-flex text-center align-items-center justify-content-center">
+                        <br/><h1 th:text="#{user.list}">&nbsp;</h1><br/>
+                    </div>
+                    
+                    <table class="table table-striped bg-light rounded shadow-sm">
+                        <tbody>
+                            <tr th:if="${colecao.empty}">
+                                <td th:text="#{user.no}"></td>
+                            </tr>
+                            <tr th:each="usuario : ${colecao}">
+                                <td><span th:text="${usuario.cpf}"></span></td>
+                                <td><span th:text="${usuario.nomeCompleto}"></span></td>
+                                <td><span th:text="${usuario.whatsapp}"></span></td>
+                                <td><span th:text="${#dates.format(usuario.dataNascimento, 'dd/MM/yyyy')}"> </span></td>
+                                <td><span th:text="${usuario.email}"></span></td>
+                                <td style="text-align: center;">
+                                    <p th:if="${usuario.ativo}"    ><span th:text="#{user.status.active}"/></p>
+                                    <p th:unless="${usuario.ativo}"><span th:text="#{user.status.inactive}"/></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> 
+                    
+                </div>
+            </section>
+            <!--  FIM DO CONTEUDO DINAMICO  -->
+        </div>
+    </div>
+    <!--  RODAPE DA PAGINA  -->
+    <footer th:insert="~{modulos/fragmento-footer-clean :: footer-clean}"></footer>
+</body>
+</html>

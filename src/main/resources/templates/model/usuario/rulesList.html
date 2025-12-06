@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- 
+ * Projeto:  Fleet Care Amazon  -  Sistema de Controle de Locacao e Manutencao de Veiculos.
+ * Gerente:  Sergio Murilo  -  smurilo at GMail
+ * Data:     Manaus/AM  -  2024
+ * Equipe:   Murilo, Victor, Allan
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="~{modulos/fragmento-header :: header-section}">
+    <title>FleetCare Amazon</title>
+</head>
+    
+<body th:style="'background-image:url(' + @{/assets/fleet_bg.png} + '); background-repeat: no-repeat, repeat; background-size: cover; background-color: white;'">    
+    <!-- Full Page Device -->
+    <div id="page-container">
+        <!-- CONTEUDO DA PAGINA  -->
+        <div id="content-wrap">
+            <!--  MENU DO SISTEMA  -->
+            <div th:insert="~{modulos/fragmento-menu-sistema :: navbar-menudashboard}"></div>
+            
+            <!--  AREA DO CONTEUDO DINAMICO  -->
+            <section class="d-flex align-items-center">
+                <div class="col inner-box">
+                    
+                    <div class="btn-toolbar justify-content-between" role="toolbar">
+                        <div>
+                          <br/><h1 th:text="#{roles.list}">&nbsp;</h1><br/>
+                        </div>
+                        <div>
+                            <br/><a class="btn btn-primary btn-lg" th:href="@{/permissao/cadastrar}">
+                                <span class="fa-regular fa-square-plus">&nbsp;</span>
+                                <span th:text="#{index.addRules}"></span>
+                            </a><br/>
+                        </div>
+                    </div>
+                                        
+                    <table class="table table-striped fleetCard">
+                        <thead>
+                            <tr>
+                                <th th:text="#{form.name}" style="width: 90%;"></th>
+                                <th th:text="#{admin.editar.papel.usuario.actions}" colspan="2" style="text-align: center; width: 10%;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:if="${permissoes.empty}">
+                                    <td colspan="3" th:text="#{roles.no}"></td>
+                            </tr>
+                            <tr th:each="rule : ${permissoes}">
+                                <td><span th:text="${rule.nome}"></span></td>
+                                <td>
+                                    <a class="btn btn-danger btn-sm" 
+                                       th:title="#{alt.text.button.delete}"
+                                       th:href="@{/permissao/remover/{id}(id=${rule.entidadeID})}"
+                                       th:data-confirm-delete="|Você gostaria de apagar ${rule.nome}?|"
+                                       onclick="return confirmarExclusao(event, this);"
+                                       th:text="#{admin.listar.usuario.delete}">
+                                    </a>
+                                </td>				
+                                <td>
+                                    <a class="btn btn-primary btn-sm" 
+                                       th:title="#{alt.text.button.update}"
+                                       th:href="@{/permissao/atualizar/{id}(id=${rule.entidadeID})}"
+                                       th:text="#{admin.editar.papel.usuario.edit}">
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--  PAGINACAO DA TABELA  -->
+                    <nav style="margin-top: 20px;" th:if="${permissoes.totalPages > 0}">
+                        <ul class="pagination" style="justify-content: center;">
+                            <!-- Botão Previous -->
+                            <li class="page-item" th:classappend="${permissoes.first} ? 'disabled'">
+                                <a class="page-link"
+                                    th:href="@{/permissao/paginar/{page}/{pageSize}(page=${permissoes.number}, pageSize=15)}">
+                                    <span th:text="#{table.pagination.previous}"></span>
+                                </a>
+                            </li>
+                            <!-- Links das páginas -->
+                            <li class="page-item"
+                                th:each="i : ${#numbers.sequence(0, permissoes.totalPages - 1)}"
+                                th:classappend="${permissoes.number == i} ? 'active'">
+                                <a class="page-link"
+                                   th:text="${i + 1}"
+                                   th:href="@{/permissao/paginar/{page}/{pageSize}(page=${i+1}, pageSize=15)}"></a>
+                            </li>
+                            <!-- Botão Next -->
+                            <li class="page-item" th:classappend="${permissoes.last} ? 'disabled'">
+                                <a class="page-link"
+                                    th:href="@{/permissao/paginar/{page}/{pageSize}(page=${permissoes.number + 2}, pageSize=15)}">
+                                    <span th:text="#{table.pagination.next}"></span>
+                                </a>
+                            </li>                 
+                        </ul>
+                    </nav>                    
+                </div>
+            </section>
+            <!--  FIM DO CONTEUDO DINAMICO  -->
+        </div>
+    </div>
+    <!--  RODAPE DA PAGINA  -->
+    <footer th:insert="~{modulos/fragmento-footer-blank :: footer-limpo}"></footer>
+</body>
+</html>

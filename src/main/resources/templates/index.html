@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-- 
+ * Projeto:  Fleet Care Amazon  -  Sistema de Controle de Locacao e Manutencao de Veiculos.
+ * Gerente:  Sergio Murilo  -  smurilo at GMail
+ * Data:     Manaus/AM  -  2024
+ * Equipe:   Murilo, Victor, Allan
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="~{modulos/fragmento-header :: header-section}">
+    <title>FleetCare Amazon</title>
+</head>
+    
+<body>    
+    <!-- Full Page Device -->
+    <div id="page-container">
+        <!-- CONTEUDO DA PAGINA  -->
+        <div id="content-wrap">
+            <!--  MENU DO SISTEMA  -->
+            <div th:insert="~{modulos/fragmento-menu-web :: navbar-menuprincipal}"></div>
+            
+            <!--  AREA DO CONTEUDO DINAMICO  -->
+            <!--  SECTION HERO  -->
+            <section class="hero-section text-center text-white d-flex align-items-center hero-bg" th:style="'background-image: url(' + @{/assets/fleet_bg.png} + ');'">
+                <div class="container">
+                    <h1 class="display-3 fw-bold mb-4">
+                        <span class="bi bi-car-front-fill me-2"/><br/><span th:text="${@environment.getProperty('application.title')}"/>
+                    </h1>
+                    <p class="lead mb-5"><span th:text="#{home.web.texto.intro.1}" /></p>
+                    <h2 class="h4 mb-4"><span th:text="#{home.web.texto.intro.2}" /></h2>
+                    <a href="#" class="btn btn-warning btn-lg shadow-lg" role="button" th:href="@{/novaconta}">
+                        <span th:text="#{home.web.botao.intro.1}" />
+                    </a>
+                </div>
+            </section>
+            
+            <!--  SECTION FLEETCARE TOOLS  -->
+            <section id="funcionalidades" class="py-5 pb-5">
+                <div class="container">
+
+                    <h2 class="text-center mb-2 display-4 fw-bold text-success">
+                        Recursos do FleetCare
+                    </h2>
+                    <p class="text-center mb-5 lead text-secondary">
+                        Mantenha seu veículo em dia com nossas ferramentas inteligentes.
+                    </p>
+
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+                        <div class="col">
+                            <div class="card h-100 shadow-sm border-success">
+                                <div class="card-body text-center p-4">
+                                    <i class="bi bi-tools display-4 text-success mb-3"></i>
+                                    <h5 class="card-title fw-bold">Histórico de Manutenções</h5>
+                                    <p class="card-text text-muted">Registre cada troca de óleo, pneu e serviço. Tenha todos os comprovantes e datas importantes em um só lugar.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card h-100 shadow-sm border-info">
+                                <div class="card-body text-center p-4">
+                                    <i class="bi bi-bell-fill display-4 text-info mb-3"></i>
+                                    <h5 class="card-title fw-bold">Lembretes Automáticos</h5>
+                                    <p class="card-text text-muted">Defina alertas baseados na quilometragem ou data para nunca mais perder o prazo da próxima revisão ou inspeção veicular.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card h-100 shadow-sm border-warning">
+                                <div class="card-body text-center p-4">
+                                    <i class="bi bi-currency-dollar display-4 text-warning mb-3"></i>
+                                    <h5 class="card-title fw-bold">Controle Financeiro</h5>
+                                    <p class="card-text text-muted">Acompanhe todos os gastos com manutenção e combustível. Saiba exatamente quanto seu carro está custando ao longo do tempo.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        </div>
+                </div>
+            </section>
+            
+            <!--  SECTION CONTACT TO US  -->
+            <section id="contato" class="py-5" style="background-color: #f8f9fa;">
+                <div class="container pb-5">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+
+                            <h2 class="text-center mb-4 display-5 fw-bold text-primary">
+                                Fale Conosco
+                            </h2>
+                            <p class="text-center mb-5 lead text-muted">
+                                Tem alguma dúvida sobre o FleetCare ou precisa de suporte? Envie-nos uma mensagem!
+                            </p>
+
+                            <form action="#" method="POST" class="p-4 p-md-5 border rounded-3 bg-white shadow-lg">
+
+                                <div class="mb-3">
+                                    <label for="nome" class="form-label">Nome Completo</label>
+                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Endereço de E-mail</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="nome@exemplo.com" required>
+                                    <div id="emailHelp" class="form-text">
+                                        Nunca compartilharemos seu e-mail com ninguém.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="assunto" class="form-label">Assunto</label>
+                                    <select class="form-select" id="assunto" name="assunto">
+                                        <option selected>Selecione um Assunto</option>
+                                        <option value="suporte">Suporte Técnico</option>
+                                        <option value="duvidas">Dúvidas sobre o Sistema</option>
+                                        <option value="parceria">Proposta de Parceria</option>
+                                        <option value="outro">Outro</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="mensagem" class="form-label">Sua Mensagem</label>
+                                    <textarea class="form-control" id="mensagem" name="mensagem" rows="5" required></textarea>
+                                </div>
+
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        Enviar Mensagem
+                                    </button>
+                                </div>
+                            </form>
+                            </div>
+                    </div>
+                </div>
+            </section>
+            <!--  FIM DO CONTEUDO DINAMICO  -->
+        </div>
+    </div>
+    <!--  RODAPE DA PAGINA  -->
+    <div th:insert="~{modulos/fragmento-footer-home :: navbar-footer}"></div>
+</body>
+</html>

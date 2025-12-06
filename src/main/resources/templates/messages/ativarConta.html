@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- 
+ * Projeto:  Fleet Care Amazon  -  Sistema de Controle de Locacao e Manutencao de Veiculos.
+ * Gerente:  Sergio Murilo  -  smurilo at GMail
+ * Data:     Manaus/AM  -  2024
+ * Equipe:   Murilo, Victor, Allan
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Bem-vindo</title>
+        <style>
+            /* estilos inline ou integrado para email */
+            .container {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+            }
+            .btn {
+                display:inline-block;
+                padding:10px 16px;
+                text-decoration:none;
+                border-radius:4px;
+                background:#FFD43B;
+                color:black;
+            }
+        </style>
+    </head>
+    <body style="background-color: #30A4E1; font-family: sans-serif; color: white;">
+        <div class="container container-login100">
+            <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+                <span class="login100-form-title p-b-53"><img width="30%" th:src="${baseUrl + '/assets/logo_menu.png'}" alt="FleeCARE"/></span>
+                <h2>Olá <span th:text="${email.nomeUsuario}">Usuário</span>! Seja bem-vindo.</h2>
+                <p>Para ativar sua conta, é necessário que você confirme seu e-mail, acessando o link abaixo:</p>    
+                <p><a th:href="${link}" class="btn">Ativar agora</a></p>
+                <hr/>
+                <small>Mensagem automática — não responda</small>
+            </div>
+        </div>
+    </body>
+</html>

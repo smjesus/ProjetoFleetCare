@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- 
+ * Projeto:  Fleet Care Amazon  -  Sistema de Controle de Locacao e Manutencao de Veiculos.
+ * Gerente:  Sergio Murilo  -  smurilo at GMail
+ * Data:     Manaus/AM  -  2024
+ * Equipe:   Murilo, Victor, Allan
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="~{modulos/fragmento-header :: header-section}">
+    <title>FleetCare Amazon</title>
+</head>
+    
+<body>    
+    <!-- Full Page Device -->
+    <div id="page-container">
+        <!-- CONTEUDO DA PAGINA  -->
+        <div id="content-wrap">
+            
+            <!--  AREA DO CONTEUDO DINAMICO  -->
+            <section class="d-flex align-items-center">
+                <div class="col inner-box">
+                    
+                    <div class="d-flex text-center align-items-center justify-content-center">
+                        <br/><h1 th:text="#{roles.list}">&nbsp;</h1><br/>
+                    </div>
+                                        
+                    <table class="table table-striped bg-light rounded shadow-sm">
+                        <tbody>
+                            <tr th:if="${permissoes.empty}">
+                                <td th:text="#{roles.no}"></td>
+                            </tr>
+                            <tr th:each="rule : ${permissoes}">
+                                <td><span th:text="${rule.nome}"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </section>
+            <!--  FIM DO CONTEUDO DINAMICO  -->
+        </div>
+    </div>
+    <!--  RODAPE DA PAGINA  -->
+    <footer th:insert="~{modulos/fragmento-footer-clean :: footer-clean}"></footer>
+</body>
+</html>

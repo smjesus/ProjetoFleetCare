@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="" />
+    <meta name="description" content="Sistema de Gestao de Veiculos - FleetCare Amazon" />
+    <meta name="viewport"    content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous"  integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" />
+    <link rel="stylesheet" href="" th:href="@{/styles/estylos.css}" />
+
+    <title>FleetCare Amazon</title>
+</head>
+<body>
+    <!-- Full Page Device -->
+    <div id="page-container">
+        <!-- CONTEUDO DA PAGINA  -->
+        <div id="content-wrap">
+            <!--  MENU DO SISTEMA  -->
+            <div th:replace="~{modulos/publica-nav :: navbar-menu}"></div>
+            
+            <!--  AREA DO CONTEUDO DINAMICO  -->
+            <section class="d-flex align-items-center">
+                <div class="col">
+                    <br/><h1 th:text="#{carros.list}">&nbsp;</h1><br/>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th th:text="#{form.name}" style="width: 30%;"></th>
+                                <th th:text="#{form.name}" style="width: 30%;"></th>
+                                <th th:text="#{form.name}" style="width: 30%;"></th>
+                                <th th:text="#{admin.editar.papel.usuario.actions}" colspan="2" style="text-align: center;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:if="${carros.empty}">
+                                    <td colspan="4" th:text="#{carros.no}"></td>
+                            </tr>
+                            <tr th:each="carro : ${carros}">
+                                <td><span th:text="${carro.modelo.modeloName}"></span></td>
+                                <td><span th:text="${carro.numeroDaPlaca}"></span></td>
+                                <td><span th:text="${carro.anoDoCarro}"></span></td>
+                                <td>
+                                    <a class="btn btn-outline-danger btn-sm" 
+                                       th:href="@{/carro/remover/{id}(id=${carro.carroID})}"
+                                       th:data-confirm-delete="|Você gostaria de apagar ${carro.numeroDaPlaca}?|"
+                                       onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false"
+                                       th:text="#{admin.listar.usuario.delete}">
+                                    </a>
+                                </td>				
+                                <td>
+                                    <a class="btn btn-outline-primary btn-sm" 
+                                       th:href="@{/carro/atualizar/{id}(id=${carro.carroID})}"
+                                       th:text="#{admin.editar.papel.usuario.edit}">
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>    
+                </div>
+            </section>
+            <!--  FIM DO CONTEUDO DINAMICO  -->
+            
+        </div>
+        <!-- ROODAPE DA PAGINA -->
+        <div th:replace="~{modulos/publica-footer :: navbar-footer}"></div>
+    </div>
+</body>
+</html>
