@@ -9,28 +9,19 @@
 [Hibernate_BADGE]:    https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white
 [ApacheTomcat_BADGE]: https://img.shields.io/badge/apache%20tomcat-%23F8DC75.svg?style=for-the-badge&logo=apache-tomcat&logoColor=black
 
-<style>
-table {
-  width: 80%; /* Largura da tabela */
-  margin: 0 auto; /* Centraliza a tabela */
-}
-</style>
 
 <h1 align="center" style="font-weight: bold;">Projeto FleetCARE</h1>
-<p align="center">
-    ![java][JAVA_BADGE]
-    ![spring][SPRING_BADGE]
-    ![hibernate][Hibernate_BADGE]
-    ![thymeleaf][Thymeleaf_BADGE]
-    ![bootstrap][Bootstrap_BADGE]
-</p>
-<p align="center">
-    ![netbeans][NetBeans_BADGE]
-    ![linux][Linux_BADGE]
-    ![tomcat][ApacheTomcat_BADGE]
-    ![mysql][MYSQL_BADGE]
-    ![chatgpt][CHATGPT_BADGE]
-</p>
+
+![java][JAVA_BADGE]
+![spring][SPRING_BADGE]
+![hibernate][Hibernate_BADGE]
+![thymeleaf][Thymeleaf_BADGE]
+![bootstrap][Bootstrap_BADGE]
+![netbeans][NetBeans_BADGE]
+![linux][Linux_BADGE]
+![tomcat][ApacheTomcat_BADGE]
+![mysql][MYSQL_BADGE]
+![chatgpt][CHATGPT_BADGE]
 
 <p align="center">
   <b>Aplicação WEB para controle de veículos para locação</b>
@@ -61,6 +52,12 @@ Para acesso à documentação da API deve-se estar logado no site!
 <h2>🤝 Colaboradores </h2>
 
 Este projeto contou com a colaboração dos seguintes profissionais:
+<style>
+table {
+  width: 80%; /* Largura da tabela */
+  margin: 0 auto; /* Centraliza a tabela */
+}
+</style>
 
 <table>
   <tr>
