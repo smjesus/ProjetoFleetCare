@@ -16,7 +16,7 @@ table {
 }
 </style>
 
-<h1 align="center" style="font-weight: bold;">Projeto CachaBOT</h1>
+<h1 align="center" style="font-weight: bold;">Projeto FleetCARE</h1>
 <p align="center">
     ![java][JAVA_BADGE]
     ![spring][SPRING_BADGE]
@@ -33,13 +33,12 @@ table {
 </p>
 
 <p align="center">
-  <b>Seu auxiliar na organizacao dos usuarios no Discord</b>
+  <b>Aplicação WEB para controle de veículos para locação</b>
 </p>
 
 <h2>🚀 Objetivo </h2>
 
-Este projeto é um BOT para o Discord com a finalizade de prover uma funcionalidade de atribuir cargo automáticamente para os usuários que entrarem no Servidor.
-Ele é um complemento ao "On-Boarding" do discord.
+Este projeto é uma aplicação com o objetivo de acompanhar as manutenções de veículos promovendo um melhor acompanhamento das preventivas.
 
 
 <h2>Pre-requisitos</h2>
