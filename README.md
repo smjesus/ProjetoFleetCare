@@ -12,54 +12,52 @@
 
 <h1 align="center" style="font-weight: bold;">Projeto FleetCARE</h1>
 
+<div align="center"> 
+    
 ![java][JAVA_BADGE]
 ![spring][SPRING_BADGE]
 ![hibernate][Hibernate_BADGE]
 ![thymeleaf][Thymeleaf_BADGE]
 ![bootstrap][Bootstrap_BADGE]
 ![netbeans][NetBeans_BADGE]
+
 ![linux][Linux_BADGE]
 ![tomcat][ApacheTomcat_BADGE]
 ![mysql][MYSQL_BADGE]
 ![chatgpt][CHATGPT_BADGE]
 
+</div>
+
 <p align="center">
   <b>Aplicação WEB para controle de veículos para locação</b>
 </p>
 
-<h2>🚀 Objetivo </h2>
+<h2>🔵 Objetivo </h2>
 
-Este projeto é uma aplicação com o objetivo de acompanhar as manutenções de veículos promovendo um melhor acompanhamento das preventivas.
+Este projeto é uma aplicação WEB com o objetivo de acompanhar as manutenções de seus veículos promovendo um melhor acompanhamento das preventivas bem como os custos envolvidos. Pretendemos criar um aplicativo para Android/Apple.
 
 
-<h2>Pre-requisitos</h2>
+<h2>🔵 Pre-requisitos</h2>
 
 Desenvolvido utilizando-se o ambiente <a href="https://netbeans.apache.org/"><b>Apache NetBeans IDE</b></a>, gerenciando as dependencias com <a href="https://maven.apache.org/">Apache Maven</a>. Este aplicativo foi desenvolvido utilizando-se as seguintes tecnologias:
 
 - Spring Boot 3.55
-- Java Discord API (JDA 5)
 - Spring JPA com MySQL Server 8
 - Servidor Tomcat 11
 
 
-<h2>📍 API Endpoints</h2>
+<h2>🔵 API Endpoints</h2>
 
 Este projeto tem uma API configurada cuja documentação pode ser encontrada online, em https://fleetcare.aeroceti.com/api-doc
 
-Para acesso à documentação da API deve-se estar logado no site!
+Para acesso à documentação da API deve-se estar logado no sistema!
 ​
 
-<h2>🤝 Colaboradores </h2>
+<h2>🔵 Colaboradores </h2>
 
 Este projeto contou com a colaboração dos seguintes profissionais:
-<style>
-table {
-  width: 80%; /* Largura da tabela */
-  margin: 0 auto; /* Centraliza a tabela */
-}
-</style>
 
-<table>
+<table align="center">
   <tr>
     <td align="center">
       <a href="#">
@@ -96,7 +94,7 @@ table {
   </tr>
 </table>
 
-<h2 id="contribute">📫 Contribuições ao Projeto </h2>
+<h2 id="contribute">🔵 Contribuições ao Projeto </h2>
 
 Todas as contribuições para melhoria do projeto são bem-vindas! Você pode ajudar, sugerindo melhorias (através de contato conosco ou clonando o projeto e enviando um "Pull Request").
 
